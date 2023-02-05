@@ -1,0 +1,115 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.7'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+    id 'application'
+    //ursprünglich 0.0.10
+    id 'org.openjfx.javafxplugin' version '0.0.12'
+}
+
+ext {
+    arcgisVersion = '100.14.0'
+}
+
+//javafx
+javafx {
+    //war 18
+    version = "17.0.2"
+    modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.media' ]
+}
+
+configurations {
+    natives
+}
+
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
+
+repositories {
+    mavenCentral()
+
+    maven {
+        url 'https://esri.jfrog.io/artifactory/arcgis'
+    }
+}
+
+dependencies {
+    implementation "com.esri.arcgisruntime:arcgis-java:$arcgisVersion"
+    natives "com.esri.arcgisruntime:arcgis-java-jnilibs:$arcgisVersion"
+    natives "com.esri.arcgisruntime:arcgis-java-resources:$arcgisVersion"
+    runtimeOnly 'org.slf4j:slf4j-nop:1.7.36'
+
+    implementation group: 'org.openjfx', name: 'javafx-base', version: javafx.version, classifier: 'win'
+    implementation group: 'org.openjfx', name: 'javafx-base', version: javafx.version, classifier: 'mac'
+    implementation group: 'org.openjfx', name: 'javafx-base', version: javafx.version, classifier: 'linux'
+    implementation group: 'org.openjfx', name: 'javafx-controls', version: javafx.version, classifier: 'win'
+    implementation group: 'org.openjfx', name: 'javafx-controls', version: javafx.version, classifier: 'mac'
+    implementation group: 'org.openjfx', name: 'javafx-controls', version: javafx.version, classifier: 'linux'
+    implementation group: 'org.openjfx', name: 'javafx-fxml', version: javafx.version, classifier: 'win'
+    implementation group: 'org.openjfx', name: 'javafx-fxml', version: javafx.version, classifier: 'mac'
+    implementation group: 'org.openjfx', name: 'javafx-fxml', version: javafx.version, classifier: 'linux'
+    implementation group: 'org.openjfx', name: 'javafx-graphics', version: javafx.version, classifier: 'win'
+    implementation group: 'org.openjfx', name: 'javafx-graphics', version: javafx.version, classifier: 'mac'
+    implementation group: 'org.openjfx', name: 'javafx-graphics', version: javafx.version, classifier: 'linux'
+
+    implementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.json:json:20220320'
+    implementation 'com.badlogicgames.gdx-controllers:gdx-controllers-ios:2.2.2'
+    implementation 'com.badlogicgames.gdx-controllers:gdx-controllers-core:2.2.2'
+    implementation 'com.badlogicgames.gdx-controllers:gdx-controllers-gwt:2.2.2'
+    implementation 'com.badlogicgames.gdx-controllers:gdx-controllers-desktop:2.2.2'
+    //client WebClient import
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    //implementation 'com.badlogicgames.gdx-controllers:gdx-controllers-android:2.2.2'
+    implementation 'junit:junit:4.13.2'
+    /*
+    implementation 'org.opendaylight.controller:features-controller:5.0.5'
+    implementation 'org.opendaylight.controller:odl-controller-blueprint:5.0.5'
+    implementation 'org.opendaylight.controller:features-controller-experimental:5.0.5'
+    implementation 'org.opendaylight.controller:controller-docs:5.0.5'
+
+     */
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/java'
+        }
+        resources {
+            srcDir 'src/resources'
+        }
+    }
+    test {
+        java {
+            srcDir 'src/test/java'
+        }
+    }
+}
+
+task copyNatives(type: Copy) {
+    description = "Copies the arcgis native libraries into the .arcgis directory for development."
+    group = "build"
+    configurations.natives.asFileTree.each {
+        from(zipTree(it))
+    }
+    into "${System.properties.getProperty("user.home")}/.arcgis/$arcgisVersion"
+}
+
+processResources {
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+}
+
+test {
+    defaultCharacterEncoding = 'UTF-8'
+    useJUnitPlatform()
+}
+
+
+run {
+    dependsOn copyNatives
+    mainClassName = 'client.Main'
+}

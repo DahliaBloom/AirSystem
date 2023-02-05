@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.UI.Controllers.FeedBackController">
+    <Button id="topBar" layoutX="9.0" layoutY="9.0" mnemonicParsing="false" onMouseDragged="#moveWindow" onMousePressed="#setOffsetForWindow" prefHeight="29.0" prefWidth="816.0">
+        <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+        </cursor>
+    </Button>
+    <ImageView fitHeight="19.0" fitWidth="17.0" layoutX="866.0" layoutY="14.0" onMouseReleased="#clickOnExitButton" pickOnBounds="true" preserveRatio="true">
+        <cursor>
+            <Cursor fx:constant="HAND" />
+        </cursor>
+        <Image url="@../img/closeButton.png" />
+    </ImageView>
+   <Pane fx:id="popup" prefHeight="600.0" prefWidth="900.0" visible="false">
+      <children>
+         <AnchorPane prefHeight="600.0" prefWidth="900.0" styleClass="popupBackground" />
+         <AnchorPane layoutX="171.0" layoutY="226.0" prefHeight="241.0" prefWidth="559.0" styleClass="popupPane" stylesheets="@Style.css">
+            <children>
+               <Text fill="WHITE" layoutX="103.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="popupH1" text="Thank you for your feedback" textAlignment="CENTER" />
+               <Separator layoutX="180.0" layoutY="80.0" prefWidth="200.0" />
+               <Text fill="WHITE" layoutX="30.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Here's a coupon for a free drink at any restaurant in the arriving airport" textAlignment="CENTER" />
+               <Text fx:id="couponCode" fill="WHITE" layoutX="226.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="foodH1" text="#123456" textAlignment="CENTER" />
+               <Button layoutX="230.0" layoutY="187.0" mnemonicParsing="false" onAction="#feedBackThanks" prefHeight="34.0" prefWidth="100.0" text="Thanks" />
+            </children>
+         </AnchorPane>
+      </children>
+   </Pane>
+    <Pane fx:id="fadePane" layoutY="57.0">
+        <children>
+            <HBox id="contextMenue" alignment="CENTER" layoutX="201.0" prefHeight="58.0" prefWidth="398.0" spacing="30.0" styleClass="messagePane">
+                <children>
+                    <ImageView fitHeight="43.0" fitWidth="31.0" onMouseClicked="#home" onMouseEntered="#onHomeIconEntered" pickOnBounds="true" preserveRatio="true" styleClass="contextMenueItem">
+                        <cursor>
+                            <Cursor fx:constant="HAND" />
+                        </cursor>
+                        <image>
+                            <Image url="@../img/main/home.png" />
+                        </image>
+                    </ImageView>
+                    <ImageView fitHeight="43.0" fitWidth="31.0" onMouseClicked="#booked" onMouseEntered="#onBookedIconEntered" pickOnBounds="true" preserveRatio="true" styleClass="contextMenueItem">
+                        <image>
+                            <Image url="@../img/main/booked.png" />
+                        </image>
+                        <cursor>
+                            <Cursor fx:constant="HAND" />
+                        </cursor>
+                    </ImageView>
+                    <ImageView fitHeight="43.0" fitWidth="31.0" onMouseClicked="#search" onMouseEntered="#onSearchIconEntered" pickOnBounds="true" preserveRatio="true" styleClass="contextMenueItem">
+                        <image>
+                            <Image url="@../img/main/search.png" />
+                        </image>
+                        <cursor>
+                            <Cursor fx:constant="HAND" />
+                        </cursor>
+                    </ImageView>
+                    <ImageView fitHeight="43.0" fitWidth="31.0" onMouseClicked="#favourites" onMouseEntered="#onFavouritesIconEntered" pickOnBounds="true" preserveRatio="true" styleClass="contextMenueItem">
+                        <image>
+                            <Image url="@../img/main/star.png" />
+                        </image>
+                        <cursor>
+                            <Cursor fx:constant="HAND" />
+                        </cursor>
+                    </ImageView>
+                    <ImageView fitHeight="43.0" fitWidth="31.0" onMouseClicked="#food" onMouseEntered="#onFoodIconEntered" pickOnBounds="true" preserveRatio="true" styleClass="contextMenueItem">
+                        <image>
+                            <Image url="@../img/main/food.png" />
+                        </image>
+                        <cursor>
+                            <Cursor fx:constant="HAND" />
+                        </cursor>
+                    </ImageView>
+                    <ImageView fitHeight="43.0" fitWidth="31.0" onMouseClicked="#safety" onMouseEntered="#onSafetyIconEntered" pickOnBounds="true" preserveRatio="true" styleClass="contextMenueItem">
+                        <image>
+                            <Image url="@../img/main/safety.png" />
+                        </image>
+                        <cursor>
+                            <Cursor fx:constant="HAND" />
+                        </cursor>
+                    </ImageView>
+                    <ImageView fitHeight="34.0" fitWidth="28.0" onMouseClicked="#notification" onMouseEntered="#onNotificationIconEntered" pickOnBounds="true" preserveRatio="true" styleClass="contextMenueItem">
+                        <image>
+                            <Image url="@../img/main/bell.png" />
+                        </image>
+                        <cursor>
+                            <Cursor fx:constant="HAND" />
+                        </cursor>
+                    </ImageView>
+                    <ImageView fitHeight="43.0" fitWidth="31.0" onMouseEntered="#onFeedbackIconEntered" pickOnBounds="true" preserveRatio="true" styleClass="contextMenueItem">
+                        <image>
+                            <Image url="@../img/main/feedback.png" />
+                        </image>
+                        <cursor>
+                            <Cursor fx:constant="HAND" />
+                        </cursor>
+                    </ImageView>
+                </children>
+            </HBox>
+            <Pane layoutX="47.0" prefHeight="58.0" prefWidth="58.0" style="-fx-padding: 0; -fx-background-radius: 100;" styleClass="messagePane">
+                <children>
+                    <ImageView fitHeight="43.0" fitWidth="31.0" layoutX="18.0" layoutY="14.0" onMouseClicked="#logout" onMouseEntered="#onLogoutIconEntered" pickOnBounds="true" preserveRatio="true" styleClass="contextMenueItem">
+                        <image>
+                            <Image url="@../img/logout.png" />
+                        </image>
+                        <cursor>
+                            <Cursor fx:constant="HAND" />
+                        </cursor>
+                    </ImageView>
+                </children>
+            </Pane>
+            <Pane fx:id="minFadePane" layoutY="34.0">
+                <children>
+                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="900.0">
+                        <children>
+                            <Label fx:id="messagePane" alignment="CENTER" contentDisplay="CENTER" opacity="0.0" styleClass="messagePane" text="Incorrect password" textFill="WHITE" />
+                        </children>
+                    </HBox>
+                    <Pane layoutX="20.0" layoutY="79.0" prefHeight="410.0" prefWidth="860.0">
+                        <children>
+                            <Pane prefHeight="410.0" prefWidth="860.0" styleClass="image">
+                        <children>
+                           <Text fill="WHITE" layoutX="40.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="feedBackH1" text="Feedback">
+                              <font>
+                                 <Font size="19.0" />
+                              </font>
+                           </Text>
+                           <Text fill="WHITE" layoutX="40.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="feedBackLabel" text="Rate the entertainment system from 1 to 5" />
+                           <RadioButton fx:id="e1" layoutX="41.0" layoutY="165.0" mnemonicParsing="false" styleClass="feedBackLabel" text="1" textFill="WHITE">
+                              <toggleGroup>
+                                 <ToggleGroup fx:id="entertainment" />
+                              </toggleGroup></RadioButton>
+                           <Separator layoutX="41.0" layoutY="89.0" prefHeight="0.0" prefWidth="238.0" />
+                           <RadioButton fx:id="e2" layoutX="115.0" layoutY="165.0" mnemonicParsing="false" styleClass="feedBackLabel" textFill="WHITE" toggleGroup="$entertainment" />
+                           <RadioButton fx:id="e3" layoutX="179.0" layoutY="165.0" mnemonicParsing="false" styleClass="feedBackLabel" textFill="WHITE" toggleGroup="$entertainment" />
+                           <RadioButton fx:id="e4" layoutX="240.0" layoutY="165.0" mnemonicParsing="false" styleClass="feedBackLabel" textFill="WHITE" toggleGroup="$entertainment" />
+                           <RadioButton fx:id="e5" layoutX="302.0" layoutY="165.0" mnemonicParsing="false" styleClass="feedBackLabel" text="5" textFill="WHITE" toggleGroup="$entertainment" />
+                           <Text fill="WHITE" layoutX="36.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="feedBackLabel" text="Rate the catering from 1 to 5" />
+                           <RadioButton fx:id="c1" layoutX="41.0" layoutY="240.0" mnemonicParsing="false" styleClass="feedBackLabel" text="1" textFill="WHITE">
+                              <toggleGroup>
+                                 <ToggleGroup fx:id="catering" />
+                              </toggleGroup></RadioButton>
+                           <RadioButton fx:id="c2" layoutX="115.0" layoutY="240.0" mnemonicParsing="false" styleClass="feedBackLabel" textFill="WHITE" toggleGroup="$catering" />
+                           <RadioButton fx:id="c3" layoutX="179.0" layoutY="240.0" mnemonicParsing="false" styleClass="feedBackLabel" textFill="WHITE" toggleGroup="$catering" />
+                           <RadioButton fx:id="c4" layoutX="240.0" layoutY="240.0" mnemonicParsing="false" styleClass="feedBackLabel" textFill="WHITE" toggleGroup="$catering" />
+                           <RadioButton fx:id="c5" layoutX="302.0" layoutY="240.0" mnemonicParsing="false" styleClass="feedBackLabel" text="5" textFill="WHITE" toggleGroup="$catering" />
+                           <Text fill="WHITE" layoutX="40.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="feedBackLabel" text="Rate the comfort from 1 to 5" />
+                           <RadioButton fx:id="f1" layoutX="40.0" layoutY="328.0" mnemonicParsing="false" styleClass="feedBackLabel" text="1" textFill="WHITE">
+                              <toggleGroup>
+                                 <ToggleGroup fx:id="comfort" />
+                              </toggleGroup></RadioButton>
+                           <RadioButton fx:id="f2" layoutX="114.0" layoutY="328.0" mnemonicParsing="false" styleClass="feedBackLabel" textFill="WHITE" toggleGroup="$comfort" />
+                           <RadioButton fx:id="f3" layoutX="178.0" layoutY="328.0" mnemonicParsing="false" styleClass="feedBackLabel" textFill="WHITE" toggleGroup="$comfort" />
+                           <RadioButton fx:id="f4" layoutX="239.0" layoutY="328.0" mnemonicParsing="false" styleClass="feedBackLabel" textFill="WHITE" toggleGroup="$comfort" />
+                           <RadioButton fx:id="f5" layoutX="301.0" layoutY="328.0" mnemonicParsing="false" styleClass="feedBackLabel" text="5" textFill="WHITE" toggleGroup="$comfort" />
+                           <Text fill="WHITE" layoutX="481.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="feedBackLabel" text="Comment section" />
+                           <TextArea fx:id="commentSection" layoutX="481.0" layoutY="155.0" prefHeight="100.0" prefWidth="358.0" />
+                           <Button layoutX="570.0" layoutY="318.0" mnemonicParsing="false" onAction="#sendFeedback" prefHeight="45.0" prefWidth="180.0" text="Send Feedback" />
+                        </children></Pane>
+                        </children>
+                    </Pane>
+                </children>
+            </Pane>
+        </children>
+    </Pane>
+    <ImageView fitHeight="6.0" fitWidth="22.0" layoutX="840.0" layoutY="24.0" onMouseReleased="#clickOnMinimizeButton" pickOnBounds="true" preserveRatio="true">
+        <cursor>
+            <Cursor fx:constant="HAND" />
+        </cursor>
+        <Image url="@../img/minimizeButton.png" />
+    </ImageView>
+    <VBox alignment="CENTER" layoutX="406.0" layoutY="606.0" prefHeight="200.0" prefWidth="100.0" />
+
+</AnchorPane>

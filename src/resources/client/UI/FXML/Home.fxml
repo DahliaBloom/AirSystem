@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.UI.Controllers.HomeController">
+    <Button id="topBar" layoutX="9.0" layoutY="9.0" mnemonicParsing="false" onMouseDragged="#moveWindow" onMousePressed="#setOffsetForWindow" prefHeight="29.0" prefWidth="816.0">
+        <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+        </cursor>
+    </Button>
+    <ImageView fitHeight="19.0" fitWidth="17.0" layoutX="866.0" layoutY="14.0" onMouseReleased="#clickOnExitButton" pickOnBounds="true" preserveRatio="true">
+        <cursor>
+            <Cursor fx:constant="HAND" />
+        </cursor>
+        <Image url="@../img/closeButton.png" />
+    </ImageView>
+    <Pane fx:id="fadePane" layoutY="57.0">
+        <children>
+            <HBox id="contextMenue" alignment="CENTER" layoutX="201.0" prefHeight="58.0" prefWidth="398.0" spacing="30.0" styleClass="messagePane">
+                <children>
+                    <ImageView fitHeight="43.0" fitWidth="31.0" onMouseEntered="#onHomeIconEntered" pickOnBounds="true" preserveRatio="true" styleClass="contextMenueItem">
+                        <cursor>
+                            <Cursor fx:constant="HAND" />
+                        </cursor>
+                        <image>
+                            <Image url="@../img/main/home.png" />
+                        </image>
+                    </ImageView>
+                    <ImageView fitHeight="43.0" fitWidth="31.0" onMouseClicked="#booked" onMouseEntered="#onBookedIconEntered" pickOnBounds="true" preserveRatio="true" styleClass="contextMenueItem">
+                        <image>
+                            <Image url="@../img/main/booked.png" />
+                        </image>
+                        <cursor>
+                            <Cursor fx:constant="HAND" />
+                        </cursor>
+                    </ImageView>
+                    <ImageView fitHeight="43.0" fitWidth="31.0" onMouseClicked="#search" onMouseEntered="#onSearchIconEntered" pickOnBounds="true" preserveRatio="true" styleClass="contextMenueItem">
+                        <image>
+                            <Image url="@../img/main/search.png" />
+                        </image>
+                        <cursor>
+                            <Cursor fx:constant="HAND" />
+                        </cursor>
+                    </ImageView>
+                    <ImageView fitHeight="43.0" fitWidth="31.0" onMouseClicked="#favourites" onMouseEntered="#onFavouritesIconEntered" pickOnBounds="true" preserveRatio="true" styleClass="contextMenueItem">
+                        <image>
+                            <Image url="@../img/main/star.png" />
+                        </image>
+                        <cursor>
+                            <Cursor fx:constant="HAND" />
+                        </cursor>
+                    </ImageView>
+                    <ImageView fitHeight="43.0" fitWidth="31.0" onMouseClicked="#food" onMouseEntered="#onFoodIconEntered" pickOnBounds="true" preserveRatio="true" styleClass="contextMenueItem">
+                        <image>
+                            <Image url="@../img/main/food.png" />
+                        </image>
+                        <cursor>
+                            <Cursor fx:constant="HAND" />
+                        </cursor>
+                    </ImageView>
+                    <ImageView fitHeight="43.0" fitWidth="31.0" onMouseClicked="#safety" onMouseEntered="#onSafetyIconEntered" pickOnBounds="true" preserveRatio="true" styleClass="contextMenueItem">
+                        <image>
+                            <Image url="@../img/main/safety.png" />
+                        </image>
+                        <cursor>
+                            <Cursor fx:constant="HAND" />
+                        </cursor>
+                    </ImageView>
+                    <ImageView fitHeight="34.0" fitWidth="28.0" onMouseClicked="#notification" onMouseEntered="#onNotificationIconEntered" pickOnBounds="true" preserveRatio="true" styleClass="contextMenueItem">
+                        <image>
+                            <Image url="@../img/main/bell.png" />
+                        </image>
+                        <cursor>
+                            <Cursor fx:constant="HAND" />
+                        </cursor>
+                    </ImageView>
+                    <ImageView fitHeight="43.0" fitWidth="31.0" onMouseClicked="#feedback" onMouseEntered="#onFeedbackIconEntered" pickOnBounds="true" preserveRatio="true" styleClass="contextMenueItem">
+                        <image>
+                            <Image url="@../img/main/feedback.png" />
+                        </image>
+                        <cursor>
+                            <Cursor fx:constant="HAND" />
+                        </cursor>
+                    </ImageView>
+                </children>
+            </HBox>
+            <Pane layoutX="47.0" prefHeight="58.0" prefWidth="58.0" style="-fx-padding: 0; -fx-background-radius: 100;" styleClass="messagePane">
+                <children>
+                    <ImageView fitHeight="43.0" fitWidth="31.0" layoutX="18.0" layoutY="14.0" onMouseClicked="#logout" onMouseEntered="#onLogoutIconEntered" pickOnBounds="true" preserveRatio="true" styleClass="contextMenueItem">
+                        <image>
+                            <Image url="@../img/logout.png" />
+                        </image>
+                        <cursor>
+                            <Cursor fx:constant="HAND" />
+                        </cursor>
+                    </ImageView>
+                </children>
+            </Pane>
+            <Pane fx:id="minFadePane" layoutY="34.0">
+                <children>
+                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="900.0">
+                        <children>
+                            <Label fx:id="messagePane" alignment="CENTER" contentDisplay="CENTER" opacity="0.0" styleClass="messagePane" text="Incorrect password" textFill="WHITE" />
+                        </children>
+                    </HBox>
+                    <Pane layoutX="20.0" layoutY="79.0" prefHeight="410.0" prefWidth="860.0">
+                        <children>
+                            <AnchorPane layoutX="557.0" prefHeight="124.0" prefWidth="303.0" style="-fx-padding: 0;" styleClass="messagePane">
+                                <children>
+                                    <VBox alignment="CENTER" layoutY="28.0" prefHeight="123.0" prefWidth="262.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                        <children>
+                                            <AnchorPane>
+                                                <children>
+                                                    <HBox alignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                                        <children>
+                                                            <Label id="clock" fx:id="clock" alignment="CENTER" contentDisplay="CENTER" prefHeight="88.0" prefWidth="345.0" style="-fx-label-padding: 0;" text="00:00" textAlignment="CENTER" textFill="WHITE" />
+                                                        </children>
+                                                    </HBox>
+                                                    <HBox alignment="CENTER" layoutY="55.99999809265137" prefWidth="262.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                                        <children>
+                                                            <Label id="date" fx:id="date" alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="336.0" text="Thursday, 16.06.2022" textAlignment="CENTER" textFill="WHITE" />
+                                                        </children>
+                                                    </HBox>
+                                                </children>
+                                            </AnchorPane>
+                                        </children>
+                                    </VBox>
+                                </children>
+                            </AnchorPane>
+                     <StackPane fx:id="mapPane" prefHeight="410.0" prefWidth="542.0" styleClass="image" />
+                            <AnchorPane layoutX="557.0" layoutY="139.0" prefHeight="271.0" prefWidth="303.0" styleClass="messagePane">
+                                <children>
+                                    <VBox alignment="CENTER" layoutX="102.0" layoutY="36.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                        <children>
+                                            <Label fx:id="destination" prefHeight="25.0" prefWidth="542.0" style="-fx-font-size: 28;" text="Dest: London" textAlignment="CENTER" textFill="WHITE">
+                                                <padding>
+                                                    <Insets left="15.0" />
+                                                </padding>
+                                            </Label>
+                                            <GridPane alignment="CENTER_LEFT" prefHeight="66.0" prefWidth="263.0">
+                                                <columnConstraints>
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="81.7777099609375" minWidth="10.0" prefWidth="54.111165364583336" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.44441731770831" minWidth="10.0" prefWidth="79.33333333333334" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="164.44439697265622" minWidth="10.0" prefWidth="130.0" />
+                                                </columnConstraints>
+                                                <rowConstraints>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                </rowConstraints>
+                                                <children>
+                                                    <ImageView fx:id="weatherIcon" fitHeight="47.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                                                        <image>
+                                                            <Image url="@../img/weather/covered.png" />
+                                                        </image>
+                                                    </ImageView>
+                                                    <VBox alignment="CENTER_LEFT" prefHeight="66.0" prefWidth="63.0" GridPane.columnIndex="1">
+                                                        <children>
+                                                            <Label fx:id="weatherState" prefHeight="15.0" prefWidth="79.0" style="-fx-font-size: 25;" text="Sunny" textFill="WHITE">
+                                                <font>
+                                                   <Font size="1.0" />
+                                                </font></Label>
+                                                            <Label fx:id="degrees" prefHeight="30.0" prefWidth="157.0" text="28 °C" textFill="WHITE">
+                                                <font>
+                                                   <Font size="15.0" />
+                                                </font></Label>
+                                                        </children>
+                                                    </VBox>
+                                                    <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
+                                                        <children>
+                                                            <Label fx:id="startTime" prefHeight="30.0" prefWidth="229.0" style="-fx-font-size: 20;" text="Start: 07:30" textFill="WHITE" />
+                                                            <Label fx:id="arrivalTime" prefHeight="30.0" prefWidth="189.0" style="-fx-font-size: 20;" text="Arrival: 13:54" textFill="WHITE" />
+                                                        </children>
+                                                    </VBox>
+                                                </children>
+                                            </GridPane>
+                                            <GridPane prefHeight="66.0" prefWidth="263.0">
+                                                <columnConstraints>
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="90.44441731770833" minWidth="10.0" prefWidth="74.66664632161458" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="90.44441731770833" minWidth="0.0" prefWidth="2.0345052078596382E-5" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="111.55558268229167" minWidth="10.0" prefWidth="111.55558268229167" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="128.22224934895831" minWidth="0.44451904296875" prefWidth="0.44451904296875" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="89.77777099609372" minWidth="10.0" prefWidth="75.0" />
+                                                </columnConstraints>
+                                                <rowConstraints>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                </rowConstraints>
+                                                <children>
+                                                    <HBox alignment="CENTER">
+                                                        <children>
+                                                            <VBox alignment="CENTER" prefHeight="66.0" prefWidth="78.0">
+                                                                <children>
+                                                                    <Label style="-fx-font-size: 23;" text="Seat" textFill="WHITE" />
+                                                                    <Label fx:id="seat" prefHeight="55.0" prefWidth="40.0" style="-fx-font-size: 18; -fx-font-style: Italic;" text="#123" textFill="WHITE" />
+                                                                </children>
+                                                            </VBox>
+                                                        </children>
+                                                    </HBox>
+                                                    <HBox alignment="CENTER" GridPane.columnIndex="2">
+                                                        <children>
+                                                            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                                                <children>
+                                                                    <Label style="-fx-font-size: 23;" text="Terminal" textFill="WHITE" />
+                                                                    <Label fx:id="terminal" style="-fx-font-size: 18; -fx-font-style: Italic;" text="#123" textFill="WHITE" />
+                                                                </children>
+                                                            </VBox>
+                                                        </children>
+                                                    </HBox>
+                                                    <HBox alignment="CENTER" GridPane.columnIndex="4">
+                                                        <children>
+                                                            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                                                <children>
+                                                                    <Label style="-fx-font-size: 23;" text="Gate" textFill="WHITE" />
+                                                                    <Label fx:id="gate" style="-fx-font-size: 18; -fx-font-style: Italic;" text="#123" textFill="WHITE" />
+                                                                </children>
+                                                            </VBox>
+                                                        </children>
+                                                    </HBox>
+                                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
+                                                        <children>
+                                                            <Pane prefHeight="200.0" prefWidth="200.0" styleClass="sep">
+                                                                <HBox.margin>
+                                                                    <Insets bottom="12.0" top="12.0" />
+                                                                </HBox.margin>
+                                                            </Pane>
+                                                        </children>
+                                                    </HBox>
+                                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="3">
+                                                        <children>
+                                                            <Pane prefHeight="200.0" prefWidth="200.0" styleClass="sep">
+                                                                <HBox.margin>
+                                                                    <Insets bottom="12.0" top="12.0" />
+                                                                </HBox.margin>
+                                                            </Pane>
+                                                        </children>
+                                                    </HBox>
+                                                </children>
+                                            </GridPane>
+                                 <Pane id="flightOnTimePane" prefHeight="41.0" prefWidth="263.0">
+                                    <children>
+                                       <Text fill="WHITE" layoutX="40.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Flight is on time 🎉" textAlignment="CENTER">
+                                          <font>
+                                             <Font size="22.0" />
+                                          </font>
+                                       </Text>
+                                    </children>
+                                 </Pane>
+                                        </children>
+                                    </VBox>
+                                </children>
+                                <padding>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                </padding>
+                            </AnchorPane>
+                        </children>
+                    </Pane>
+                </children>
+            </Pane>
+        </children>
+    </Pane>
+    <ImageView fitHeight="6.0" fitWidth="22.0" layoutX="840.0" layoutY="24.0" onMouseReleased="#clickOnMinimizeButton" pickOnBounds="true" preserveRatio="true">
+        <cursor>
+            <Cursor fx:constant="HAND" />
+        </cursor>
+        <Image url="@../img/minimizeButton.png" />
+    </ImageView>
+    <VBox alignment="CENTER" layoutX="406.0" layoutY="606.0" prefHeight="200.0" prefWidth="100.0" />
+
+</AnchorPane>

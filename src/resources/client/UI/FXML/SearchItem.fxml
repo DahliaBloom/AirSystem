@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="823.0" styleClass="messagePane" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.UI.Controllers.SearchItemController">
+   <children>
+      <HBox alignment="CENTER_LEFT" layoutX="25.0" prefHeight="100.0" prefWidth="798.0" spacing="10.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="100.0" prefWidth="136.0">
+               <children>
+                  <Text fx:id="departure" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Departure:" wrappingWidth="318.13677978515625">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="arrival" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Arrival:" wrappingWidth="324.3590087890625">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="136.0">
+               <children>
+                  <Text fx:id="gate" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Gate:" wrappingWidth="204.35906982421875">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="terminal" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Terminal:" wrappingWidth="205.24786376953125">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Button fx:id="bookButton" layoutX="766.0" layoutY="28.0" mnemonicParsing="false" onAction="#setBooked" prefHeight="43.0" prefWidth="95.0" text="Book" AnchorPane.rightAnchor="10.0">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

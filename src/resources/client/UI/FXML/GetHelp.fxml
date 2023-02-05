@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="198.0" prefWidth="546.0" styleClass="popupPane" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.UI.Controllers.RequestHelpController">
+   <children>
+      <Text fill="WHITE" layoutX="160.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="popupH1" text="Requested Service" />
+      <Text fill="WHITE" layoutX="107.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="feedBackLabel" text="Someone will take care of you in a few minutes" />
+      <Separator layoutX="173.0" layoutY="71.0" prefWidth="200.0" />
+      <Button layoutX="224.0" layoutY="142.0" mnemonicParsing="false" onAction="#requestServiceOkay" prefHeight="31.0" prefWidth="98.0" text="Okay" />
+   </children>
+
+</AnchorPane>
